@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ChallengeCalculator
 {
     public class Calculator
     {
         private readonly char[] delimiters =  { ',', '\n' };
+        private List<double> negativeNumbers = new List<double>();
 
         public double ProcessInput(string input)
         {
@@ -17,9 +20,15 @@ namespace ChallengeCalculator
                 var isNumber = double.TryParse(addend, out double number);
                 if (isNumber)
                 {
-                    answer += number;
+                    if (number < 0)
+                        negativeNumbers.Add(number);
+                    else
+                        answer += number;
                 }
             }
+
+            if (negativeNumbers.Any())
+                throw new ArgumentOutOfRangeException($"Invalid negative numbers {string.Join(", ", negativeNumbers)}");
 
             return answer;
         }
