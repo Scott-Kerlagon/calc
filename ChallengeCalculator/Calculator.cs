@@ -4,7 +4,7 @@ namespace ChallengeCalculator
 {
     public class Calculator
     {
-        private readonly char[] delimiters =  { ',' };
+        private readonly char[] delimiters =  { ',', '\n' };
 
         public double ProcessInput(string input)
         {
