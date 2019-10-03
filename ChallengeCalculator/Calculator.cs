@@ -12,16 +12,11 @@ namespace ChallengeCalculator
 
             string[] addends = input.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
 
-            int counter = 0;
             foreach (string addend in addends)
             {
-                if (counter >= 2)
-                    break;
-
                 var isNumber = double.TryParse(addend, out double number);
                 if (isNumber)
                 {
-                    counter++;
                     answer += number;
                 }
             }

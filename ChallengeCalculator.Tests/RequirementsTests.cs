@@ -21,13 +21,25 @@ namespace ChallengeCalculator.Tests
             var result4 = calc.ProcessInput("5,tytyt");
             Assert.AreEqual(5, result4);
 
+            //Removed limit so test no longer applies
             //Max 2 number limit
-            var result5 = calc.ProcessInput("5,2,3");
-            Assert.AreEqual(7, result5);
+            //var result5 = calc.ProcessInput("5,2,3");
+            //Assert.AreEqual(7, result5);
 
             //Negative numbers
             var result6 = calc.ProcessInput("5,-2,3");
-            Assert.AreEqual(3, result6);
+            Assert.AreEqual(6, result6);
+        }
+
+        [TestMethod]
+        public void Requirement2()
+        {
+            Calculator calc = new Calculator();
+            var result1 = calc.ProcessInput("1,2,3,4,5,6,7,8,9,10,11,12");
+            Assert.AreEqual(78, result1);
+
+            var result2 = calc.ProcessInput("1,2,3,4,5,6,7,8,9,10,11,-12,junk");
+            Assert.AreEqual(54, result2);
         }
     }
 }
