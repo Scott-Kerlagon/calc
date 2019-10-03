@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ChallengeCalculator.Tests/bin/Debug
+/ChallengeCalculator.Tests/obj/Debug
+/packages
+/ChallengeCalculator/.vs/ChallengeCalculator/v16/Server/sqlite3
+/.vs/ChallengeCalculator/v16
+/.vs
+/ChallengeCalculator/bin/Debug
+/ChallengeCalculator/obj/Debug
+/ChallengeCalculator/.vs/ChallengeCalculator/v16
