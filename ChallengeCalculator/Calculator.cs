@@ -6,14 +6,20 @@ namespace ChallengeCalculator
 {
     public class Calculator
     {
-        private readonly char[] delimiters =  { ',', '\n' };
+        private List<char> delimiters = new List<char>() { ',', '\n' };
         private List<double> negativeNumbers = new List<double>();
 
         public double ProcessInput(string input)
         {
             double answer = 0;
 
-            string[] addends = input.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+            string[] addends = input.Split(delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries);
+
+            if (addends != null && addends.Length > 0 && addends[0].StartsWith("//") && addends[0].Length == 3)//If the custom delimiter at this requirement number is more than 1 char ignore
+            {
+                delimiters.Add(addends[0][2]);
+                addends = input.Split(delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries).Skip(1).ToArray();
+            }
 
             foreach (string addend in addends)
             {

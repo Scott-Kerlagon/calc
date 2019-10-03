@@ -107,5 +107,16 @@ namespace ChallengeCalculator.Tests
             var result2 = calc.ProcessInput("2,1001,1000");
             Assert.AreEqual(1002, result2);
         }
+
+        [TestMethod]
+        public void Requirement6()
+        {
+            Calculator calc = new Calculator();
+            var result1 = calc.ProcessInput("//;\n2;5");
+            Assert.AreEqual(7, result1);
+
+            var result2 = calc.ProcessInput("//|\n2|5");
+            Assert.AreEqual(7, result2);
+        }
     }
 }
