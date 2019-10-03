@@ -117,6 +117,9 @@ namespace ChallengeCalculator.Tests
 
             var result2 = calc.ProcessInput("//|\n2|5");
             Assert.AreEqual(7, result2);
+
+            var result3 = calc.ProcessInput("//||\n2|5");
+            Assert.AreEqual(0, result3);
         }
     }
 }

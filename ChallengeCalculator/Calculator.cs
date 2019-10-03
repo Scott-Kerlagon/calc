@@ -6,11 +6,11 @@ namespace ChallengeCalculator
 {
     public class Calculator
     {
-        private List<char> delimiters = new List<char>() { ',', '\n' };
-        private List<double> negativeNumbers = new List<double>();
 
         public double ProcessInput(string input)
         {
+            List<char> delimiters = new List<char>() { ',', '\n' };
+            List<double> negativeNumbers = new List<double>();
             double answer = 0;
 
             string[] addends = input.Split(delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries);
