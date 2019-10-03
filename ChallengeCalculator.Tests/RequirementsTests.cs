@@ -14,7 +14,9 @@ namespace ChallengeCalculator.Tests
             Assert.AreEqual(20, result);
 
             var result2 = calc.ProcessInput("1,5000");
-            Assert.AreEqual(5001, result2);
+            //Expected result changed to 1 after requirement 5 to ignore values over 1000
+            //Assert.AreEqual(5001, result2);
+            Assert.AreEqual(1, result2);
 
             var result3 = calc.ProcessInput("");
             Assert.AreEqual(0, result3);
@@ -93,6 +95,17 @@ namespace ChallengeCalculator.Tests
             Calculator calc = new Calculator();
             var result4 = calc.ProcessInput("1,-2,-4");
             Assert.AreEqual(6, result4);
+        }
+
+        [TestMethod]
+        public void Requirement5()
+        {
+            Calculator calc = new Calculator();
+            var result1 = calc.ProcessInput("2,1001,6");
+            Assert.AreEqual(8, result1);
+
+            var result2 = calc.ProcessInput("2,1001,1000");
+            Assert.AreEqual(1002, result2);
         }
     }
 }

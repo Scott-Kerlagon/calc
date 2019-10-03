@@ -22,7 +22,7 @@ namespace ChallengeCalculator
                 {
                     if (number < 0)
                         negativeNumbers.Add(number);
-                    else
+                    else if (number < 1001)
                         answer += number;
                 }
             }
