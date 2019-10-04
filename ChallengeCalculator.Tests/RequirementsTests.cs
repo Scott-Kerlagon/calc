@@ -121,5 +121,33 @@ namespace ChallengeCalculator.Tests
             var result3 = calc.ProcessInput("//||\n2|5");
             Assert.AreEqual(0, result3);
         }
+
+        [TestMethod]
+        public void Requirement7()
+        {
+            Calculator calc = new Calculator();
+            var result7 = calc.ProcessInput("//[[]]\n4[]3");
+            Assert.AreEqual(7, result7);
+
+            var result1 = calc.ProcessInput("//[***]\n11***22***33");
+            Assert.AreEqual(66, result1);
+
+            var result2 = calc.ProcessInput("//[||]\n2||5");
+            Assert.AreEqual(7, result2);
+
+            var result3 = calc.ProcessInput("//[55]\n2,55");
+            Assert.AreEqual(2, result3);
+
+            var result4 = calc.ProcessInput("//[]\n255");
+            Assert.AreEqual(255, result4);
+
+            var result5 = calc.ProcessInput("//[,]\n4,,2");
+            Assert.AreEqual(6, result5);
+
+            var result6 = calc.ProcessInput("//[[]\n4[2");
+            Assert.AreEqual(6, result6);
+
+            
+        }
     }
 }
