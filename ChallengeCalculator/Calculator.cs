@@ -6,10 +6,20 @@ namespace ChallengeCalculator
 {
     public class Calculator
     {
+        private readonly string AlternateDelimiter;
+        private readonly bool DenyNegativeNumbers;
+        private readonly double UpperBound;
+
+        public Calculator(string alternateDelimiter = "", bool denyNegativeNumbers = true, double upperBound = 1000)
+        {
+            AlternateDelimiter = alternateDelimiter;
+            DenyNegativeNumbers = denyNegativeNumbers;
+            UpperBound = upperBound;
+        }
 
         public CalculatorResult ProcessInput(string input)
         {
-            List<string> delimiters = new List<string>() { ",", "\n" };
+            List<string> delimiters = new List<string>() { ",", "\n", AlternateDelimiter };
             List<double> negativeNumbers = new List<double>();
             CalculatorResult result = new CalculatorResult();
 
@@ -44,9 +54,9 @@ namespace ChallengeCalculator
                 var isNumber = double.TryParse(addend, out double number);
                 if (isNumber)
                 {
-                    if (number < 0)
+                    if (DenyNegativeNumbers && number < 0)
                         negativeNumbers.Add(number);
-                    else if (number < 1001)
+                    else if (number <= UpperBound)
                         result.AddNumber(number);
                     else
                         result.AddNumber(0);

@@ -175,5 +175,15 @@ namespace ChallengeCalculator.Tests
             var result2 = calc.ProcessInput("2,4\n20,6");
             Assert.AreEqual("2+4+20+6 = 32", result2.Formula);
         }
+
+        [TestMethod]
+        public void Stretch3()
+        {
+            //Tests here are to verify configurations take.
+            Calculator calc = new Calculator("|", false, 10);
+            var result1 = calc.ProcessInput("1,-1,20");
+            Assert.AreEqual(0, result1.Answer);
+            Assert.AreEqual("1+-1+0 = 0", result1.Formula);
+        }
     }
 }
