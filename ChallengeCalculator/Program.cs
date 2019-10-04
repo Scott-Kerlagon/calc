@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChallengeCalculator
 {
@@ -17,17 +13,16 @@ namespace ChallengeCalculator
             // as console input I will use the enter key's \r\n to do the same. Linux line endings are \n and windows tends to use \r\n.
             //Another possible way would be to unescape \\n from the input from console and proceed from there.
 
-            bool keepReading = true;
             string input = string.Empty;
-            while (keepReading)
+            while (true)
             {
                 string line = Console.ReadLine();
                 if (line.ToLower() == "x")
-                    keepReading = false;
+                    break;
                 input += line + '\n'; // Adding newline from enter key.
             }
-            var answer = calc.ProcessInput(input);
-            Console.Write(answer);
+            var result = calc.ProcessInput(input);
+            Console.Write(result.Answer + Environment.NewLine + result.Formula);
             Console.Write($"{Environment.NewLine}Press any key to end.{Environment.NewLine}");
             Console.ReadKey();
         }

@@ -7,11 +7,11 @@ namespace ChallengeCalculator
     public class Calculator
     {
 
-        public double ProcessInput(string input)
+        public CalculatorResult ProcessInput(string input)
         {
             List<string> delimiters = new List<string>() { ",", "\n" };
             List<double> negativeNumbers = new List<double>();
-            double answer = 0;
+            CalculatorResult result = new CalculatorResult();
 
             string[] addends = input.Split(delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries);
 
@@ -47,14 +47,18 @@ namespace ChallengeCalculator
                     if (number < 0)
                         negativeNumbers.Add(number);
                     else if (number < 1001)
-                        answer += number;
+                        result.AddNumber(number);
+                    else
+                        result.AddNumber(0);
                 }
+                else
+                    result.AddNumber(0);
             }
 
             if (negativeNumbers.Any())
                 throw new ArgumentOutOfRangeException($"Invalid negative numbers {string.Join(", ", negativeNumbers)}");
 
-            return answer;
+            return result;
         }
     }
 }
