@@ -20,7 +20,11 @@ namespace ChallengeCalculator
             {
                 if (addends[0].StartsWith("//[") && addends[0].EndsWith("]"))
                 {
-                    delimiters.Add(addends[0].Remove(addends[0].Length - 1, 1).Remove(0, 3));
+                    delimiters.AddRange(addends[0]
+                        .Remove(addends[0].Length - 1, 1)
+                        .Remove(0, 3)
+                        .Split(new string[] { "][" }, StringSplitOptions.RemoveEmptyEntries)
+                        );
                     newDelimitersAdded = true;
                 }
                 else if (addends[0].StartsWith("//") && addends[0].Length == 3)//If the custom delimiter at this requirement number is more than 1 char ignore
@@ -31,7 +35,8 @@ namespace ChallengeCalculator
             }
             if (newDelimitersAdded)
             {
-                addends = input.Split(delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries).Skip(1).ToArray(); 
+                //Skip 1 is to ignore the custom delimiters when present.
+                addends = input.Split(delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries).Skip(1).ToArray();
             }
 
             foreach (string addend in addends)
